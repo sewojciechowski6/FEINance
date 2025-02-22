@@ -1,9 +1,10 @@
+import Input from "./components/Input";
 import MainTable from "./components/MainTable";
 
 export default function Home() {
   return (
     <>
-      <div className="columns-2">
+      <div className="columns-3">
         <MainTable
           isExpense={false}
           rowsArray={[
@@ -12,6 +13,7 @@ export default function Home() {
             { data: "Transport", value: "50" },
           ]}
         />
+        <Input />
         <MainTable
           isExpense={true}
           rowsArray={[
