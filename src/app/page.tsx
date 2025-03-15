@@ -1,27 +1,31 @@
 import Input from "./components/Input";
 import MainTable from "./components/MainTable";
+import Summary from "./components/Summary";
 
 export default function Home() {
   return (
     <>
-      <div className="columns-3">
+      <div className="grid grid-cols-3 grid-rows-2 gap-4">
         <MainTable
+          className="row-span-2"
           isExpense={false}
-          rowsArray={[
+          rows={[
             { data: "Rent", value: "1000" },
             { data: "Food", value: "200" },
             { data: "Transport", value: "50" },
           ]}
         />
-        <Input />
+        <Summary />
         <MainTable
+          className="row-span-2"
           isExpense={true}
-          rowsArray={[
+          rows={[
             { data: "Salary", value: "2000", purpose: "Income" },
             { data: "Food", value: "200", purpose: "Expense" },
             { data: "Transport", value: "50", purpose: "Expense" },
           ]}
         />
+        <Input />
       </div>
     </>
   );
