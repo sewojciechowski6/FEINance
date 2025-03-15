@@ -13,8 +13,8 @@ export default function MainTable({
   rows = [],
   className,
 }: Props) {
-  const headerClass = "border border-gray-300 margin-2";
-  const rowClass = "border border-gray-300 margin-2";
+  const headerClass = "border border-gray-300 p-2";
+  const rowClass = "border border-gray-300 p-2";
 
   const headerPurpose = isExpense ? (
     <th className={headerClass}>Purpose</th>
