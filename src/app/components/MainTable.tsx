@@ -26,10 +26,16 @@ export default function MainTable({
       return <td className={rowClass}>{value}</td>;
     };
 
+    const rowAmount = (value: number) => {
+      if (!isExpense) return <td className={rowClass}>{value}</td>;
+
+      return <td className={rowClass}>-{value}</td>;
+    };
+
     return rows.map((row, index) => (
       <tr key={index}>
         <td className={rowClass}>{row.date}</td>
-        <td className={rowClass}>{row.amount}</td>
+        {rowAmount(row.amount)}
         {rowPurpose(row.purpose)}
       </tr>
     ));
