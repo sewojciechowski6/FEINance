@@ -24,11 +24,13 @@ export default async function Home() {
 
   return (
     <>
-      <div className="grid grid-cols-3 grid-rows-2 gap-4 m-8">
-        <MainTable className="row-span-2" isExpense={false} rows={incomeRows} />
-        <Summary />
-        <MainTable className="row-span-2" isExpense={true} rows={expenseRows} />
-        <Input />
+      <div className="grid grid-cols-3 gap-4 m-8">
+        <MainTable isExpense={false} rows={incomeRows} />
+        <div className="grid grid-rows-2 gap-4">
+          <Summary />
+          <Input />
+        </div>
+        <MainTable isExpense={true} rows={expenseRows} />
       </div>
     </>
   );
