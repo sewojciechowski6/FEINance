@@ -35,12 +35,12 @@ export default function Input() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid grid-cols-5 border border-gray-300"
+      className="grid grid-cols-5 border border-slate-800"
     >
       <button
         type="button"
         onClick={toggleSign}
-        className="border-r border-r-gray-300 p-2 text-center content-center hover:bg-gray-100"
+        className="border-r border-r-slate-800 p-2 text-center content-center hover:bg-slate-500 transition-colors"
       >
         {sign}
       </button>
@@ -53,15 +53,17 @@ export default function Input() {
         step="0.01"
         required
       />
-      <textarea
-        className="border-t border-t-gray-300 col-span-5 row-span-2 resize-none p-2"
-        value={purpose}
-        onChange={(e) => setPurpose(e.target.value)}
-        placeholder="Purpose"
-      />
+      {sign === "-" && (
+        <textarea
+          className="border-t border-t-slate-800 col-span-5 row-span-2 resize-none p-2"
+          value={purpose}
+          onChange={(e) => setPurpose(e.target.value)}
+          placeholder="Purpose"
+        />
+      )}
       <button
         type="submit"
-        className="col-span-5 border-t border-t-gray-300 p-2 bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+        className="col-span-5 border-t border-t-slate-800 p-2 bg-blue-500 text-white hover:bg-blue-600 transition-colors"
       >
         Add Transaction
       </button>

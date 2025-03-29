@@ -13,8 +13,8 @@ export default function MainTable({
   rows = [],
   className,
 }: Props) {
-  const headerClass = "border border-gray-300 p-2";
-  const rowClass = "border border-gray-300 p-2";
+  const headerClass = "border border-slate-800 p-2";
+  const rowClass = "border border-slate-800 p-2";
 
   const headerPurpose = isExpense ? (
     <th className={headerClass}>Purpose</th>
@@ -42,7 +42,7 @@ export default function MainTable({
   };
 
   return (
-    <table className={`border-collapse border border-gray-300 ${className}`}>
+    <table className={`border-collapse border border-slate-800 ${className}`}>
       <thead>
         <tr>
           <th className={headerClass}>Date</th>
