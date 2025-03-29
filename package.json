@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.5.0",
     "@prisma/extension-accelerate": "^1.2.2",
     "@tailwindcss/postcss": "^4.0.8",
+    "mongodb": "^6.14.2",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
