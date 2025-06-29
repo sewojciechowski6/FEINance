@@ -25,9 +25,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
+        style={{
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+        }}
       >
-        {children}
+        <div className="min-h-screen">
+          <div className="container mx-auto px-4 py-8">
+            <header className="text-center mb-12">
+              <h1 className="text-5xl font-bold text-white mb-3 drop-shadow-lg">
+                FEINance
+              </h1>
+              <p className="text-white/80 text-xl font-light">Manage your finances with style</p>
+            </header>
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

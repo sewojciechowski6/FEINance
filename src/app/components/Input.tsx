@@ -33,40 +33,47 @@ export default function Input() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid grid-cols-5 border border-slate-800"
-    >
-      <button
-        type="button"
-        onClick={toggleSign}
-        className="border-r border-r-slate-800 p-2 text-center content-center hover:bg-slate-500 transition-colors"
-      >
-        {sign}
-      </button>
-      <input
-        className="col-span-4 p-2"
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        placeholder="Amount"
-        step="0.01"
-        required
-      />
-      {sign === "-" && (
-        <textarea
-          className="border-t border-t-slate-800 col-span-5 row-span-2 resize-none p-2"
-          value={purpose}
-          onChange={(e) => setPurpose(e.target.value)}
-          placeholder="Purpose"
-        />
-      )}
-      <button
-        type="submit"
-        className="col-span-5 border-t border-t-slate-800 p-2 bg-blue-500 text-white hover:bg-blue-600 transition-colors"
-      >
-        Add Transaction
-      </button>
-    </form>
+    <div className="glass-strong rounded-2xl shadow-2xl overflow-hidden">
+      <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={toggleSign}
+            className={`w-14 h-14 rounded-xl font-bold text-xl transition-all duration-300 shadow-lg ${
+              sign === "+"
+                ? "bg-emerald-500 text-white shadow-emerald-500/30 hover:bg-emerald-600 hover:shadow-emerald-500/40"
+                : "bg-rose-500 text-white shadow-rose-500/30 hover:bg-rose-600 hover:shadow-rose-500/40"
+            } hover:scale-105`}
+          >
+            {sign}
+          </button>
+          <input
+            className="flex-1 px-4 py-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/70 transition-all duration-200 text-black"
+            type="number"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Enter amount"
+            step="0.01"
+            required
+          />
+        </div>
+        
+        {sign === "-" && (
+          <textarea
+            className="w-full px-4 py-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/70 transition-all duration-200 resize-none h-24 text-black"
+            value={purpose}
+            onChange={(e) => setPurpose(e.target.value)}
+            placeholder="What was this expense for?"
+          />
+        )}
+        
+        <button
+          type="submit"
+          className="w-full py-4 px-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600"
+        >
+          Add Transaction
+        </button>
+      </form>
+    </div>
   );
 }
