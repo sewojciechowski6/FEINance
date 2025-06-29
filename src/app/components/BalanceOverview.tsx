@@ -40,7 +40,6 @@ export default function BalanceOverview({ refreshTrigger }: Props) {
   return (
     <div className="glass-strong rounded-2xl shadow-2xl p-6">
       <div className="text-center">
-        <h3 className="text-xl font-semibold text-white/90 mb-4">Current Balance</h3>
         <div className={`text-4xl font-bold mb-4 ${
           isPositive ? "text-emerald-300" : "text-rose-300"
         }`}>

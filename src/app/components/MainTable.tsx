@@ -29,17 +29,17 @@ export default function MainTable({
   return (
     <div className={`glass rounded-2xl shadow-xl overflow-hidden ${className}`}>
       <div className="relative">
-        <div className="max-h-[32rem] overflow-y-auto custom-scrollbar">
+        <div className="max-h-[25rem] overflow-y-auto custom-scrollbar">
           <div className="divide-y divide-white/10">
             {rows.map((row, index) => (
-              <div key={index} className="p-5 hover:bg-white/10 transition-all duration-200 group">
-                <div className="flex justify-between items-start">
+              <div key={index} className="p-5 hover:bg-white/10 transition-all duration-200 group min-h-[4.5rem] flex items-center">
+                <div className="flex justify-between items-center w-full">
                   <div className="flex-1">
                     <div className="text-sm text-white/60 mb-1 font-medium">
                       {row.date}
                     </div>
                     {isExpense && row.purpose && (
-                      <div className="text-white/90 font-medium text-base">
+                      <div className="text-white/90 font-medium text-base truncate">
                         {row.purpose}
                       </div>
                     )}
