@@ -20,6 +20,7 @@ export default function Home() {
   const [expenses, setExpenses] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [isNegativeBalance, setIsNegativeBalance] = useState(false);
 
   const fetchTransactions = async () => {
     try {
@@ -113,8 +114,18 @@ export default function Home() {
       
       <div className="lg:order-2 space-y-6">
         <div>
-          <h2 className="text-2xl font-bold text-white mb-6">Overview</h2>
-          <BalanceOverview refreshTrigger={refreshTrigger} />
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-white">Overview</h2>
+            {isNegativeBalance && (
+              <div className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-rose-500/30 text-rose-200 border border-rose-400/30">
+                ⚠ Negative Balance
+              </div>
+            )}
+          </div>
+          <BalanceOverview 
+            refreshTrigger={refreshTrigger} 
+            onBalanceChange={(balance, isPositive) => setIsNegativeBalance(!isPositive)}
+          />
         </div>
         <div>
           <h2 className="text-2xl font-bold text-white mb-6">Add Transaction</h2>
