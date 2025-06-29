@@ -28,31 +28,33 @@ export default function MainTable({
 
   return (
     <div className={`glass rounded-2xl shadow-xl overflow-hidden ${className}`}>
-      <div className="max-h-96 overflow-y-auto custom-scrollbar">
-        <div className="divide-y divide-white/10">
-          {rows.map((row, index) => (
-            <div key={index} className="p-5 hover:bg-white/10 transition-all duration-200 group">
-              <div className="flex justify-between items-start">
-                <div className="flex-1">
-                  <div className="text-sm text-white/60 mb-1 font-medium">
-                    {row.date}
-                  </div>
-                  {isExpense && row.purpose && (
-                    <div className="text-white/90 font-medium text-base">
-                      {row.purpose}
+      <div className="relative">
+        <div className="max-h-[32rem] overflow-y-auto custom-scrollbar">
+          <div className="divide-y divide-white/10">
+            {rows.map((row, index) => (
+              <div key={index} className="p-5 hover:bg-white/10 transition-all duration-200 group">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <div className="text-sm text-white/60 mb-1 font-medium">
+                      {row.date}
                     </div>
-                  )}
-                </div>
-                <div className={`font-bold text-xl transition-all duration-200 group-hover:scale-105 ${
-                  isExpense 
-                    ? "text-rose-300" 
-                    : "text-emerald-300"
-                }`}>
-                  {isExpense ? "-" : "+"}${row.amount.toFixed(2)}
+                    {isExpense && row.purpose && (
+                      <div className="text-white/90 font-medium text-base">
+                        {row.purpose}
+                      </div>
+                    )}
+                  </div>
+                  <div className={`font-bold text-xl transition-all duration-200 group-hover:scale-105 ${
+                    isExpense 
+                      ? "text-rose-300" 
+                      : "text-emerald-300"
+                  }`}>
+                    {isExpense ? "-" : "+"}${row.amount.toFixed(2)}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

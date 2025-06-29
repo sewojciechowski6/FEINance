@@ -2,7 +2,9 @@
 import { useState, useEffect } from "react";
 import Input from "./components/Input";
 import MainTable from "./components/MainTable";
-import Summary from "./components/Summary";
+import BalanceOverview from "./components/BalanceOverview";
+import IncomeSummary from "./components/IncomeSummary";
+import ExpenseSummary from "./components/ExpenseSummary";
 
 type Transaction = {
   id: string;
@@ -61,15 +63,18 @@ export default function Home() {
             <span className="w-4 h-4 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"></span>
             Income
           </h2>
+          <div className="glass rounded-2xl shadow-xl p-6 mb-4">
+            <div className="text-white/70 text-lg font-medium">Loading...</div>
+          </div>
           <div className="glass rounded-2xl shadow-xl p-8 text-center">
             <div className="text-white/70 text-xl font-medium">Loading...</div>
           </div>
         </div>
         
-        <div className="lg:order-2 space-y-8">
+        <div className="lg:order-2 space-y-6">
           <div>
             <h2 className="text-2xl font-bold text-white mb-6">Overview</h2>
-            <div className="glass rounded-2xl shadow-xl p-8 text-center">
+            <div className="glass-strong rounded-2xl shadow-2xl p-6">
               <div className="text-white/70 text-xl font-medium">Loading...</div>
             </div>
           </div>
@@ -84,6 +89,9 @@ export default function Home() {
             <span className="w-4 h-4 bg-rose-400 rounded-full shadow-lg shadow-rose-400/50"></span>
             Expenses
           </h2>
+          <div className="glass rounded-2xl shadow-xl p-6 mb-4">
+            <div className="text-white/70 text-lg font-medium">Loading...</div>
+          </div>
           <div className="glass rounded-2xl shadow-xl p-8 text-center">
             <div className="text-white/70 text-xl font-medium">Loading...</div>
           </div>
@@ -99,13 +107,14 @@ export default function Home() {
           <span className="w-4 h-4 bg-emerald-400 rounded-full shadow-lg shadow-emerald-400/50"></span>
           Income
         </h2>
+        <IncomeSummary refreshTrigger={refreshTrigger} />
         <MainTable isExpense={false} rows={incomeRows} />
       </div>
       
-      <div className="lg:order-2 space-y-8">
+      <div className="lg:order-2 space-y-6">
         <div>
           <h2 className="text-2xl font-bold text-white mb-6">Overview</h2>
-          <Summary refreshTrigger={refreshTrigger} />
+          <BalanceOverview refreshTrigger={refreshTrigger} />
         </div>
         <div>
           <h2 className="text-2xl font-bold text-white mb-6">Add Transaction</h2>
@@ -118,6 +127,7 @@ export default function Home() {
           <span className="w-4 h-4 bg-rose-400 rounded-full shadow-lg shadow-rose-400/50"></span>
           Expenses
         </h2>
+        <ExpenseSummary refreshTrigger={refreshTrigger} />
         <MainTable isExpense={true} rows={expenseRows} />
       </div>
     </main>
