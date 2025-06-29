@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { formatCurrency } from '../lib/utils';
 
 type Props = {
   refreshTrigger?: number;
@@ -36,7 +37,7 @@ export default function ExpenseSummary({ refreshTrigger }: Props) {
   return (
     <div className="glass rounded-2xl shadow-xl p-6 mb-4 hover:glass-strong transition-all duration-200 text-center">
       <div className="text-3xl font-bold text-rose-300">
-        -${totalExpense.toFixed(2)}
+        -{formatCurrency(totalExpense).slice(1)}
       </div>
     </div>
   );

@@ -32,11 +32,11 @@ export default function RootLayout({
       >
         <div className="min-h-screen">
           <div className="container mx-auto px-4 py-8">
-            <header className="text-center mb-12">
-              <h1 className="text-5xl font-bold text-white mb-3 drop-shadow-lg">
+            <header className="flex justify-between items-center mb-8">
+              <h1 className="text-3xl font-bold text-white drop-shadow-lg">
                 FEINance
               </h1>
-              <p className="text-white/80 text-xl font-light">Manage your finances with style</p>
+              <p className="text-white/80 text-lg font-light italic">If it's not a HELL YES! then it's a NO</p>
             </header>
             {children}
           </div>

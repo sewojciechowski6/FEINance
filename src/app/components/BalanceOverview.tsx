@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { formatCurrency } from '../lib/utils';
 
 type Props = {
   refreshTrigger?: number;
@@ -43,7 +44,7 @@ export default function BalanceOverview({ refreshTrigger }: Props) {
         <div className={`text-4xl font-bold mb-4 ${
           isPositive ? "text-emerald-300" : "text-rose-300"
         }`}>
-          {isPositive ? "+" : "-"}${Math.abs(balance).toFixed(2)}
+          {isPositive ? "+" : "-"}{formatCurrency(Math.abs(balance)).slice(1)}
         </div>
         <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold ${
           isPositive 

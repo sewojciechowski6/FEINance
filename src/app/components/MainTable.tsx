@@ -1,3 +1,5 @@
+import { formatCurrency } from '../lib/utils';
+
 type Props = {
   isExpense: boolean;
   rows: {
@@ -49,7 +51,7 @@ export default function MainTable({
                       ? "text-rose-300" 
                       : "text-emerald-300"
                   }`}>
-                    {isExpense ? "-" : "+"}${row.amount.toFixed(2)}
+                    {isExpense ? "-" : "+"}${formatCurrency(row.amount).slice(1)}
                   </div>
                 </div>
               </div>
