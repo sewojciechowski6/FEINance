@@ -1,7 +1,53 @@
-import { getSummary } from "../lib/transactions";
+"use client";
+import { useState, useEffect } from "react";
 
-export default async function Summary() {
-  const { totalIncome, totalExpense, balance } = await getSummary();
+type SummaryData = {
+  totalIncome: number;
+  totalExpense: number;
+  balance: number;
+};
+
+type Props = {
+  refreshTrigger?: number;
+};
+
+export default function Summary({ refreshTrigger }: Props) {
+  const [summary, setSummary] = useState<SummaryData>({
+    totalIncome: 0,
+    totalExpense: 0,
+    balance: 0,
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchSummary = async () => {
+      try {
+        const response = await fetch('/api/transactions?type=summary');
+        const data = await response.json();
+        setSummary(data);
+      } catch (error) {
+        console.error("Failed to fetch summary:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSummary();
+  }, [refreshTrigger]);
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div className="glass-strong rounded-2xl shadow-2xl p-8">
+          <div className="text-center">
+            <div className="text-white/70 text-xl font-medium">Loading...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const { totalIncome, totalExpense, balance } = summary;
   
   const isPositive = balance >= 0;
 

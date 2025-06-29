@@ -1,8 +1,11 @@
 "use client";
 import { useState, FormEvent } from "react";
-import { createTransaction } from "../lib/transactions";
 
-export default function Input() {
+type Props = {
+  onTransactionAdded?: () => void;
+};
+
+export default function Input({ onTransactionAdded }: Props) {
   const [sign, setSign] = useState("-");
   const [amount, setAmount] = useState("");
   const [purpose, setPurpose] = useState("");
@@ -19,14 +22,25 @@ export default function Input() {
     if (isNaN(numericAmount)) return;
 
     try {
-      await createTransaction({
-        type: sign === "+" ? "income" : "expense",
-        amount: numericAmount,
-        purpose: sign === "+" ? "Income" : purpose,
+      const response = await fetch('/api/transactions/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: sign === "+" ? "income" : "expense",
+          amount: numericAmount,
+          purpose: sign === "+" ? "Income" : purpose,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to create transaction');
+      }
 
       setAmount("");
       setPurpose("");
+      onTransactionAdded?.();
     } catch (error) {
       console.error("Failed to create transaction:", error);
     }
