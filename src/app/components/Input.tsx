@@ -13,7 +13,7 @@ export default function Input() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!amount || !purpose) return;
+    if (!amount || (sign === "-" && !purpose)) return;
 
     const numericAmount = parseFloat(amount);
     if (isNaN(numericAmount)) return;
@@ -22,7 +22,7 @@ export default function Input() {
       await createTransaction({
         type: sign === "+" ? "income" : "expense",
         amount: numericAmount,
-        purpose,
+        purpose: sign === "+" ? "Income" : purpose,
       });
 
       setAmount("");
