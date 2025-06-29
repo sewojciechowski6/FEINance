@@ -36,7 +36,7 @@ export default function RootLayout({
               <h1 className="text-3xl font-bold text-white drop-shadow-lg">
                 FEINance
               </h1>
-              <p className="text-white/80 text-lg font-light italic">If it's not a HELL YES! then it's a NO</p>
+              <p className="text-white/80 text-lg font-light italic">If it&apos;s not a HELL YES! then it&apos;s a NO</p>
             </header>
             {children}
           </div>

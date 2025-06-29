@@ -27,7 +27,7 @@ export default function BalanceOverview({ refreshTrigger, onBalanceChange }: Pro
     };
 
     fetchBalance();
-  }, [refreshTrigger]);
+  }, [refreshTrigger, onBalanceChange]);
 
   if (loading) {
     return (
